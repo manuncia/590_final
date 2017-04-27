@@ -2,7 +2,8 @@
 title: "FTIR_Absorbance"
 author: "Marife Anunciado"
 date: "April 27, 2017"
-output: rmarkdown::html_vignette
+output: 
+  github_document: default
 vignette: >
   %\VignetteIndexEntry{FTIRAbsorbance}
   %\VignetteEngine{knitr::rmarkdown}
@@ -23,8 +24,7 @@ library(reshape2)
 library(magrittr)
 ```
 
-#### For each column, values were normalized. The cbind statement creates a new object/column of row means where "x" is the input matrix, row.means = rowMeans(x)" uses the rowMeans function to the matrix, and names the new column "row.means" so now we can make our new object with a column of row means. Since original 
-wavelength values were converted as character, a new column "Wavelength" was added for plotting the 
+#### For each column, values were normalized. The cbind statement creates a new object/column of row means where "x" is the input matrix, row.means = rowMeans(x)" uses the rowMeans function to the matrix, and names the new column "row.means" so now we can make our new object with a column of row means. Since original wavelength values were converted as character, a new column "Wavelength" was added for plotting the 
 absorbance purpose.
 
 ```{r, echo=FALSE, warning=FALSE}
@@ -43,6 +43,8 @@ knitr::kable(head(a))
 a <- as.data.frame(normalize_add_rowmeans(mulch_plot))
 ```
 
+#### The plot only shows the absorbance of plastic materials on a particular wavelength.
+
 ```{r, echo=FALSE, warning=FALSE}
 plot_abs <- function(df, df_x, df_y, xname,yname,title) {
     df <- ggplot(df) + geom_line(aes(df_x,df_y, colour = "red")) +
@@ -59,7 +61,7 @@ plot_abs(a,a$Wavelength,a$C_38SAMPLE,xname = "Wavelength,nm",
                    yname = "Absorbance, AU", title = "FTIR Spectra of Plastic Mulch") 
 ```
 
-#### The plot below shows the wide-format data frame of number of flights originating from EWR airport at each month from each airlines.
+#### The plot below shows the absorbance of plastic materials on a particular wavelength with the acompanying compounds. 
 
 ```{r, echo=FALSE, warning=FALSE, results="asis"}
 plot_abs_compounds <- function(df, df_x, df_y, xname,yname, title)
