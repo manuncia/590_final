@@ -1,0 +1,12 @@
+Package: FTIRAbsorbance
+Title: The function performs minimum-maximum normalization of absorbance at 600-4000 wavelength (nm).
+Version: 0.0.0.9000
+Authors@R: person("Marife", "Anunciado", email = "manuncia@vols.utk.edu", role = c("aut", "cre"))
+Description: Raw dataset generated directly from a FTIR instrument can be normalized using the minimum and maximum values. It then takes the mean of all row values and plot the absorbance.
+Depends: R (>= 3.3.3)
+License: CCO
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Suggests: knitr, rmarkdown, devtools, roxygen2
+VignetteBuilder: knitr
