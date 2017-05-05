@@ -10,7 +10,11 @@ library(dplyr)
 library(reshape2)
 library(magrittr)
 
-## ---- echo=FALSE, warning=FALSE------------------------------------------
+## ------------------------------------------------------------------------
+raw_a <- as.data.frame(mulch_plot)
+knitr::kable(head(raw_a))
+
+## ---- warning=FALSE------------------------------------------------------
 normalize_add_rowmeans <- function(x) {
   for (i in 1:ncol(x)) {
         x[,i] <- (x[,i]- min(x[,i], na.rm = TRUE)) / (max(x[,i],na.rm = TRUE)-min(x[,i], na.rm = TRUE))
@@ -24,7 +28,7 @@ knitr::kable(head(a))
 ## ------------------------------------------------------------------------
 a <- as.data.frame(normalize_add_rowmeans(mulch_plot))
 
-## ---- echo=FALSE, warning=FALSE------------------------------------------
+## ---- warning=FALSE------------------------------------------------------
 plot_abs <- function(df, df_x, df_y, xname,yname,title) {
     df <- ggplot(df) + geom_line(aes(df_x,df_y, colour = "red")) +
       xlab(deparse(substitute(xname))) + #user can assign a name on the x-axis label
@@ -38,7 +42,7 @@ plot_abs <- function(df, df_x, df_y, xname,yname,title) {
 plot_abs(a,a$Wavelength,a$C_38SAMPLE,xname = "Wavelength,nm", 
                    yname = "Absorbance, AU", title = "FTIR Spectra of Plastic Mulch") 
 
-## ---- echo=FALSE, warning=FALSE, results="asis"--------------------------
+## ---- warning=FALSE, results="asis"--------------------------------------
 plot_abs_compounds <- function(df, df_x, df_y, xname,yname, title)
 {
     df <- ggplot(df) + 

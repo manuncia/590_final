@@ -25,11 +25,158 @@ body {
 
 <body>
 
-<h1 id="ftir_absorbance">FTIR_Absorbance</h1>
+<h1 id="attenuated-total-reflection-fourier-transform-infrared-spectroscopy">Attenuated Total Reflection-Fourier Transform Infrared Spectroscopy</h1>
 <p>Marife Anunciado<br />
 April 27, 2017</p>
-<h4 id="for-each-column-values-were-normalized.-the-cbind-statement-creates-a-new-objectcolumn-of-row-means-where-x-is-the-input-matrix-row.means-rowmeansx-uses-the-rowmeans-function-to-the-matrix-and-names-the-new-column-row.means-so-now-we-can-make-our-new-object-with-a-column-of-row-means.-since-original-wavelength-values-were-converted-as-character-a-new-column-wavelength-was-added-for-plotting-the">For each column, values were normalized. The cbind statement creates a new object/column of row means where &quot;x&quot; is the input matrix, row.means = rowMeans(x)&quot; uses the rowMeans function to the matrix, and names the new column &quot;row.means&quot; so now we can make our new object with a column of row means. Since original wavelength values were converted as character, a new column &quot;Wavelength&quot; was added for plotting the</h4>
-<p>absorbance purpose.</p>
+<h3 id="data-download-conversion">Data Download &amp; Conversion</h3>
+<p>Changes on the spectral intensities correlates to the formation and destruction of functional groups within the plastic films.Using the package FTIRAbsorbance, raw data (.csv file) generated directly from the instrument can be normalized through R without use of any data analysis software. Upon download of the original dataset, the table below shows the output with the original absorbance for each wavelength spectrum, using the code higlighted.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">raw_a &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(mulch_plot)
+knitr::<span class="kw">kable</span>(<span class="kw">head</span>(raw_a))</code></pre></div>
+<table style="width:100%;">
+<colgroup>
+<col width="1%"></col>
+<col width="3%"></col>
+<col width="7%"></col>
+<col width="7%"></col>
+<col width="7%"></col>
+<col width="7%"></col>
+<col width="7%"></col>
+<col width="7%"></col>
+<col width="7%"></col>
+<col width="7%"></col>
+<col width="7%"></col>
+<col width="7%"></col>
+<col width="7%"></col>
+<col width="7%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">AU</th>
+<th align="right">C_38SAMPLE</th>
+<th align="right">TNCleanMeshOrganixP205SAMPLE</th>
+<th align="right">TNCleanMeshOrganixP205SAMPLE005</th>
+<th align="right">TNCleanMeshOrganixP205SAMPLE006</th>
+<th align="right">TNCleanMeshOrganixP205SAMPLE007</th>
+<th align="right">TNCleanMeshOrganixP205SAMPLE008</th>
+<th align="right">TNCleanMeshOrganixP205SAMPLE009</th>
+<th align="right">TNCleanMeshOrganixP205SAMPLE010</th>
+<th align="right">TNCleanMeshOrganixP205SAMPLE011</th>
+<th align="right">TNCleanMeshOrganixP205SAMPLE012</th>
+<th align="right">TNCleanMeshOrganixP205SAMPLE013</th>
+<th align="right">TNCleanMeshOrganixP205SAMPLE014</th>
+<th align="right">TNCleanMeshOrganixP205SAMPLE015</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">4000</td>
+<td align="right">0.0125</td>
+<td align="right">0.0144</td>
+<td align="right">0.0167</td>
+<td align="right">0.0113</td>
+<td align="right">0.0113</td>
+<td align="right">0.0132</td>
+<td align="right">0.0117</td>
+<td align="right">0.0116</td>
+<td align="right">0.0157</td>
+<td align="right">0.0165</td>
+<td align="right">0.0114</td>
+<td align="right">0.0117</td>
+<td align="right">0.0161</td>
+</tr>
+<tr class="even">
+<td align="right">3999</td>
+<td align="right">0.0125</td>
+<td align="right">0.0144</td>
+<td align="right">0.0167</td>
+<td align="right">0.0113</td>
+<td align="right">0.0113</td>
+<td align="right">0.0132</td>
+<td align="right">0.0116</td>
+<td align="right">0.0116</td>
+<td align="right">0.0157</td>
+<td align="right">0.0165</td>
+<td align="right">0.0114</td>
+<td align="right">0.0117</td>
+<td align="right">0.0161</td>
+</tr>
+<tr class="odd">
+<td align="right">3998</td>
+<td align="right">0.0124</td>
+<td align="right">0.0143</td>
+<td align="right">0.0167</td>
+<td align="right">0.0113</td>
+<td align="right">0.0113</td>
+<td align="right">0.0132</td>
+<td align="right">0.0116</td>
+<td align="right">0.0116</td>
+<td align="right">0.0157</td>
+<td align="right">0.0165</td>
+<td align="right">0.0114</td>
+<td align="right">0.0117</td>
+<td align="right">0.0161</td>
+</tr>
+<tr class="even">
+<td align="right">3997</td>
+<td align="right">0.0123</td>
+<td align="right">0.0143</td>
+<td align="right">0.0167</td>
+<td align="right">0.0113</td>
+<td align="right">0.0113</td>
+<td align="right">0.0132</td>
+<td align="right">0.0117</td>
+<td align="right">0.0116</td>
+<td align="right">0.0157</td>
+<td align="right">0.0165</td>
+<td align="right">0.0114</td>
+<td align="right">0.0118</td>
+<td align="right">0.0161</td>
+</tr>
+<tr class="odd">
+<td align="right">3996</td>
+<td align="right">0.0123</td>
+<td align="right">0.0143</td>
+<td align="right">0.0167</td>
+<td align="right">0.0113</td>
+<td align="right">0.0113</td>
+<td align="right">0.0131</td>
+<td align="right">0.0117</td>
+<td align="right">0.0116</td>
+<td align="right">0.0156</td>
+<td align="right">0.0165</td>
+<td align="right">0.0114</td>
+<td align="right">0.0118</td>
+<td align="right">0.0161</td>
+</tr>
+<tr class="even">
+<td align="right">3995</td>
+<td align="right">0.0123</td>
+<td align="right">0.0144</td>
+<td align="right">0.0167</td>
+<td align="right">0.0113</td>
+<td align="right">0.0113</td>
+<td align="right">0.0131</td>
+<td align="right">0.0117</td>
+<td align="right">0.0116</td>
+<td align="right">0.0156</td>
+<td align="right">0.0165</td>
+<td align="right">0.0114</td>
+<td align="right">0.0118</td>
+<td align="right">0.0161</td>
+</tr>
+</tbody>
+</table>
+<h3 id="normalization-and-row-mean-calculation">Normalization and Row Mean Calculation</h3>
+<p>For each column, values were normalized. The cbind statement creates a new object/column of row means where &quot;x&quot; is the input matrix, row.means = rowMeans(x)&quot; uses the rowMeans function to the matrix, and names the new column &quot;row.means&quot; so now we can make our new object with a column of row means. Since original wavelength values were converted as character, a new column &quot;Wavelength&quot; was added for plotting the absorbance purpose.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">normalize_add_rowmeans &lt;-<span class="st"> </span>function(x) {
+  for (i in <span class="dv">1</span>:<span class="kw">ncol</span>(x)) {
+        x[,i] &lt;-<span class="st"> </span>(x[,i]-<span class="st"> </span><span class="kw">min</span>(x[,i], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) /<span class="st"> </span>(<span class="kw">max</span>(x[,i],<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)-<span class="kw">min</span>(x[,i], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))
+      }
+      x &lt;-<span class="st"> </span><span class="kw">cbind</span>(x,<span class="dt">row.means =</span> <span class="kw">rowMeans</span>(x)) 
+      x &lt;-<span class="st">  </span><span class="kw">add_column</span>(x, <span class="dt">Wavelength =</span> <span class="dv">4000</span>:<span class="dv">600</span>)
+} 
+a &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">normalize_add_rowmeans</span>(mulch_plot))
+knitr::<span class="kw">kable</span>(<span class="kw">head</span>(a))</code></pre></div>
 <table>
 <colgroup>
 <col width="2%"></col>
@@ -181,14 +328,42 @@ April 27, 2017</p>
 </tbody>
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">normalize_add_rowmeans</span>(mulch_plot))</code></pre></div>
-<h4 id="the-plot-only-shows-the-absorbance-of-plastic-materials-on-a-particular-wavelength.">The plot only shows the absorbance of plastic materials on a particular wavelength.</h4>
+<h3 id="absorbance">Absorbance</h3>
+<p>The plot shows the FTIR absorbance spectra of plastic materials in the wavenumber from 4000-600. The code highlighted can be modified to display researcher's interest, as shown in the succeeding plot below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot_abs &lt;-<span class="st"> </span>function(df, df_x, df_y, xname,yname,title) {
+    df &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(df_x,df_y, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>)) +
+<span class="st">      </span><span class="kw">xlab</span>(<span class="kw">deparse</span>(<span class="kw">substitute</span>(xname))) +<span class="st"> </span><span class="co">#user can assign a name on the x-axis label</span>
+<span class="st">      </span><span class="kw">ylab</span>(<span class="kw">deparse</span>(<span class="kw">substitute</span>(yname))) +<span class="st"> </span><span class="co">#user can assign a name on the y-axis label</span>
+<span class="st">      </span><span class="kw">ggtitle</span>(<span class="kw">deparse</span>(<span class="kw">substitute</span>(title))) +<span class="st"> </span><span class="co">#user can assign a plot title </span>
+<span class="st">      </span><span class="kw">theme_bw</span>() +<span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) 
+      df
+    <span class="kw">print</span>(df)} </code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_abs</span>(a,a$Wavelength,a$C_38SAMPLE,<span class="dt">xname =</span> <span class="st">&quot;Wavelength,nm&quot;</span>, 
                    <span class="dt">yname =</span> <span class="st">&quot;Absorbance, AU&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;FTIR Spectra of Plastic Mulch&quot;</span>) </code></pre></div>
 <p><img src="data:image/png;base64,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" /></p>
-<h4 id="the-plot-below-shows-the-absorbance-of-plastic-materials-on-a-particular-wavelength-with-the-acompanying-compounds.">The plot below shows the absorbance of plastic materials on a particular wavelength with the acompanying compounds.</h4>
+<h3 id="absorbance-and-functional-groups">Absorbance and Functional Groups</h3>
+<p>The plot below shows the absorbance of plastic materials on a particular wavelength with the acompanying compounds. Looking at the plot gives what possible bending and stretching might have occurred indicating changes on the properties of plastic materials.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot_abs_compounds &lt;-<span class="st"> </span>function(df, df_x, df_y, xname,yname, title)
+{
+    df &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(df_x,df_y, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>)) +
+<span class="st">    </span><span class="kw">xlab</span>(<span class="kw">deparse</span>(<span class="kw">substitute</span>(xname))) +<span class="st"> </span><span class="co">#user can assign a name on the x-axis label</span>
+<span class="st">    </span><span class="kw">ylab</span>(<span class="kw">deparse</span>(<span class="kw">substitute</span>(yname))) +<span class="st"> </span><span class="co">#user can assign a name on the y-axis label</span>
+<span class="st">    </span><span class="kw">ggtitle</span>(<span class="kw">deparse</span>(<span class="kw">substitute</span>(title))) +<span class="st"> </span><span class="co">#user can assign a plot title </span>
+<span class="st">    </span><span class="kw">theme_bw</span>() +<span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) 
+    df &lt;-<span class="st"> </span>df +
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span> <span class="dv">1800</span>, <span class="dt">y=</span><span class="fl">1.1</span>, <span class="dt">label=</span><span class="st">&quot;C_O_Stretch&quot;</span>, <span class="dt">size =</span><span class="fl">3.0</span>) 
+    df &lt;-<span class="st"> </span>df +<span class="st">   </span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">800</span>, <span class="dt">y =</span> <span class="fl">1.0</span>, <span class="dt">label=</span><span class="st">&quot;O_H_Bend&quot;</span>, <span class="dt">size =</span><span class="fl">3.0</span>)
+    df &lt;-<span class="st"> </span>df +<span class="st"> </span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span> <span class="dv">2994</span>, <span class="dt">y=</span><span class="fl">0.3</span>, <span class="dt">label=</span><span class="st">&quot;C_H_Stretch&quot;</span>, <span class="dt">size =</span><span class="fl">3.0</span>)
+    df
+    <span class="kw">print</span>(df)}</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_abs_compounds</span>(a,a$Wavelength,a$C_38SAMPLE,<span class="dt">xname =</span> <span class="st">&quot;Wavelength,nm&quot;</span>, 
                    <span class="dt">yname =</span> <span class="st">&quot;Absorbance, AU&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;FTIR Spectra of Plastic Mulch&quot;</span>) </code></pre></div>
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAMAAABNUi8GAAABU1BMVEUAAAAAACsAAE4AAFUAJ3YAKysAK1UAK4AATp0AVVUAVaonAAAnACcnJ3YndsQrAAArACsrAFUrKwArKysrK1UrK4ArVVUrVaorgNQzMzNNTU1NTWtNTYhNa6ZNiMROACdOAE5OnetVAABVACtVAFVVKwBVK4BVVQBVVVVVgIBVgNRVqqpVqv9rTU1rTWtrTYhra4hra6ZrpsRrpuF2xOuAKwCAKyuAgFWAqoCA1KqA1P+ITU2ITWuITYiIa02Ia6aIxP+dTgCd6+uma02ma2umiE2mxKam4eGm4f+qVQCqVSuqVVWqqlWq1ICq1P+q/6qq/9Sq///EdifEiE3E6+vE///UgCvU1IDU1KrU1P/U/6rU/9TU///hpmvh///rnU7rxHbr653r68Tr6+v4dm3/qlX/qqr/xIj/1ID/1Kr/1NT/4ab//6r//8T//9T//+H////BPrQyAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAd90lEQVR4nO2d/YPbtn3G5d0ad9rLxVvSyZc4W+U5ezsvy5xr00uyXuNutZpt3S210hfba3dUre10Z/7/Pw0A30mABCBCwJd4nrQWKREfguLnQBCiqFmKIAFn5rsCCNIXCIoEHQiKBB0IigQdCIoEHQiKBB0IigQdCIoEHTtBN7NT9r90PctydLlbzsrp27O7L2ovVaVW/InFIHx773JwGc5ia2HJV3TnPE3FihVAyWsrUSjl5Wbz2vONRauZfJuRw8a1oJWhxSJyiWpZHw0LumGgTKpyRadKQTlQKmj+17I9hqDBZj9BGyoV+zITNH9pVTaZ62xqNdiG6glaqJIvvWHi9wkqyeror/NG+A+WEDTU2Am6ffuc/U9H0N2y8HGVPbNjMrAnN7P8AMsb1sIx/hQ73rKW7fZsvuZzm2avoFh4VTXN5V9C3nRXRQTptATmr+WHdVHi38TM7dnfszplC7D1po1F2cyvloKXbzNy2NgJuvurS/Y/qxZUFF9+5zjvN27KHuQ6myh8+tYxaxPXxdE7S7lwj6Dr6oCfTdQEXRfrykv8TPz1bO/9rCtosejt2VuPMl6+zchhs9dZ/LrRzWwKquiDLvLJOS/NZeD2bY/5lGgwF0WXkU/dnvHS/NV8BXzhNe/FSg7xmVlVke3xImuvyz5otQoRpvSKk9fzXUfQclG2TrG6eh8AOWBcC1rfsaviJGm3FEsyQ4RFQqF8Ki18KsTmXueQ3NSVcKcUdFaexhcVyIpUpz6FoNUqsuocXW7EK6ddQctFs4rslhDUU/YTdOAQv+mcsjNrZvNif6/vnG9KvbbH9TYxZ/HFZzVBxSIbmaB8daJQVWRVjBlUgjbOcVZ88OGUD0LJBD2tbxR/GvESp4JKDBVNkq6gvCk8rZovuaBVHXihehHh6tFlj6ApO8avsz8YCBpm3ApaO0cqe5Ki4cr2Oj+wn5avNw/xfIns1bKk/BDfFLRVhFXgtOcQn26O/vMs93lVHMtbh3gI6jWOBd0ti0WKj2t4o8qauUVxkpSN5fBTcDYlzF2X3UnhGVs4b4b7TpKKFVdFsrMhDiuA1SpEuJHb47+9d5kLmp35z5uLQlDPcSyosDBL3jmciT3/rfzom48ccZc2xYjSuhy2zEeKyn5CNSalFLQqkk9lJ2wZsFyFyCobLZjn50Dixbce5Qf7YlEI6jmuBc1avSzlWQsTYlNoJ7zN+pb5BG//fp2xeI/yzvmqXA1fOO/cKgStFRGGzhvATc3P7Ji+5vNZl5V5zBarDdTzlyCo53i5mgmjNohuICgSdCAoEnQgKBJ0cEU9EnQgKBJ0ICgSdCAoEnQgKBJ0ICgSdCAoEnTsBL2PII6zn6DV5JUVoC8EiASqSIHYB4SgQQHjJEJQV0QCVaRAhKCuiASqSIEIQV0RCVSRAhGCuiISqCIFIgR1RSRQRQpECOqKSKCKFIgQ1BWRQBUpECGoKyKBKlIgQlBXRAJVpECEoK6IBKpIgQhBXREJVJECEYK6IhKoIgUiBFUT+X1xTusz1Rehs5ve7D6s3TiynNm+++JgVZw+EYIqibdni3T38LyaSVflTc7uXYofTHi3Jmg5A0EPBYxcUCHaL35Zmyl/ICFzkN+b/pt3Hh1dsvZ0Lm5Uvz2eHV1u33nE21qaGx0cEYIqiZt5e+b2e+Wvf4gb6DFP+a/OcF1Xp+xf3t6u5+wpbjLNjQ6OCEGVxD5Bs9vuckHfze8TushnhLZ8QZobHRwRgiqJ3R5m8zeQ1oWTmckQ1AkRgiqJ4iRpuahmqpOk/KdpcifZMT2b4Yf4zd1vIOiBgJELKm7EXP6kQnOYaS1uSb5bchvFoNNc3K0+O0mCoAcCxi5oYMA4iRB0gJj9rkPx453NOSugfaIkQlBXRAJVpECEoK6IBKpIgQhBXREJVJECEYK6IhKoIgUiBHVFJFBFCkQI6opIoIoUiBDUFZFAFSkQIagrIoEqUiBCUFdEAlWkQHQo6BWCOA1a0KCAcRJxiHdFJFBFCkQI6opIoIoUiBDUFZFAFSkQIagrIoEqUiBCUFdEAlWkQISgrogEqkiBCEFdEQlUkQIRgroiEqgiBSIEdUUkUEUKRAjqikigihSIENQVkUAVKRAhqCsigSpSIHoVtHG3DnETmfIem8ez2s1jq+WLp4i/syCOAnQtaOumsA1B2UR589haAQgaG9GnoN2bwjYF/fBFdtej7XeWvKFdz956BEFjI/oUtHnPTXFUv1s/xM+LW8Peu2Qas3+3xz4FTcYGmiZKYkCCSg7x5a1h2VJr3h+AoLERAz7EMx3LW8NC0FiJIZ8kscN6cWtYJig/0C8haGzEwIeZNnlPlHcE1rM7fwpBYyNioF6bCEF9EAMQtHFTWM07xELQWIgBCGoTCBoLEYJqEyGoDyIE1SUmENQHEYLqEiGoFyIE1SVCUC9ECKpLhKBeiBBUlwhBvRAhqC4RgnohQlBdIgT1QoSgukQI6oUIQXWJENQLEYLqEiGoFyIE1SVCUC9ECKpLhKBeiBBUlwhBvRAhqC4RgnohhiOo0f6HoLEQIaguEYJ6IUJQXSIE9UKEoLpECOqFCEF1iRDUCxGC6hIhqBciBNUlQlAvxBEEvfns5MErMXX9+OT95+3SAyspE7yghl/rJLDzKRD3F/TN04v05Qd86uYzNpW7CkEJ7HwKxP0FvfnieXr9EW84rz9+ld58/qxVemAlZSAoiIZAPUErLaup+zxXZkkMlz90kuBrGF30BH39oNBSHOLfQwuqCTROlMQxW1B+kvRPP4agmkDjREkcsw9azDVLD6ykDAQF0RCoexb/pDiLZ+1oNlUvPbCSMhAUREOg0Tgob0Rfn5yUo0wQ1LoqIGoC8UlSPRDUC3Eqghp+DqlB7K4BgnogQlAVsbsGCOqBCEFVxO4aIKgHIgRVEbtrgKAeiBBUReyuAYJ6IE5EUNOLNYeJnUBQL8QIBNUDQ9AwiRBUQZRgIKgHIgRVECUYCOqBCEEVRAkGgnogTl9QzfMnCBomEYIqiF0OBPVBhKAKYpcDQX0QIaiC2OVAUB9ECKogdjkQ1AcxAkH1yBA0TCIEVRBtOfpA40RJhKAKoi1HH2icKIkQVEG05egDjRMlEYIqiLYcfaBxoiRCUAXRlqMPNE6URAiqINpy9IHGiZIIQRVEW44+0DhREqcuaAJBaRMhqIIoJZmEwM6nQISgCqKUZBICO58CcfKCJhCUNDEgQU32v66gSQpBaROnL6hm2wxBwyRORVCFPRCUOnHygqYQlDQRgiqIEhQE9UCEoAqiBAVBPRAhqIIoQUFQD0QIqiBKUBDUAxGCKogSFAT1QISgCqIEBUE9ECGogihBQVAPRAiqIEpQENQDEYIqiBIUBPVAhKAKogQFQT0QIaiCKEFBUA9ECKogSlAQ1APRoaBXZkkSwwKNwlfy0kn5z95RrQLxFrSgOquwBhonSiIO8QqiBAVBPRAhqIIoQUFQD8RgBDXb/0aCapEhaJhECKogSlAQ1AMRgiqIEhQE9UCEoAqiBAVBPRCNBN0tZ7O7LzTJEHTsRElEC6ogSlAQ1ANx2i1o0ngwIkpYENQDkW4L2lgcgk6VCEErYn8gqBei8SFe5OhymAxBx06URLsWdHPnfJAMQcdOlETLQ/xqPkg+pKCJQkIISp5oKehm+CB/aEFlxSEoeSIErYj9gaBeiBMSVFIegpInTqcPCkEnSZzGWTwEnSzRbhxUw08IarQ0iBZAOp8kQdDJEm0F/QonSfsCjRMl0UpQdqj3fhafQNAoiBaCrlkn9HSYDEHHTpREU0HFedLwGFMKQQnsfApEM0HX4gReYxA0haAEdj4FouEwkzi0Q1CdENj5FIhmLehGdD8hqE4I7HwKRNM+6O0Z+qB6IbDzKRAtzuI3OIvXCYGdT4FoNQ7KmlGMg+4NNE6URNtPkn4Xm6CJJkcbaJ4oiWQ/i28ICUEnS4SgJbE/ENQPEYKWxP5AUD9EyoJWBSDoZImWgm6GL1qGoGMnSiJa0JLYHwjqh0hX0BSCxkAkLGgKQSMgmgu6ns1O1xp3CYWgYydKorGgq7u/Wp7ennn/XjwEjYNofkX9Kb8q1P+dRTqCyspDUPJECFoS+wNB/RCND/FrfojfLRfVMzefnTx4JabePD1571m79MBKiuwhaJKoykNQ8kTzkyR+Oeis5uebpxfpyw/E5NcX6evc1YMK2nhoMFWvyIj9gaB+iPsPM9188Ty9/uh5PtUtPbCSIhAURFOgnqDXH79Kbz5/Jqb+JT/E3+cx+3H6hP1ntnxZIGk8NJdRvGKeZCQOMl6kgt6eLdLGKBM/qOeCPr4Qujb1HvgrKIIWFERToHwclLtZN7TeghZT9dIDKykCQUE0BSqGmfhDbZip1gf9IQTVB5onSuL+gr55+qR2Fo9DvC7QPFESzcdBuZqScVDeiLKp95+3Sw+spIi9oGoNISh94v7joEOlB1ZSxKWgOmgIGiZxApfbQdApEyFoSewPBPVDNBZ0e6z5c7IQdOxESTQVVOdK0GbpgZUUgaAgmgJ7hpk0MkFBDas4dqIkmregEFQvBHY+BaJxH1TjUuVm6YGVFIGgIJoClT+iEOZJUhcAQekTJzTMBEGnSISgJbE/ENQPkfI4aF4Cgk6ZaH4Wv2An8jqDTRB07ERJtBkHXS3SzfCtRSDo2ImSaCPoeh7G9+IhaARE4z7oStipcXMmCDp2oiQaC8q/NLcavHtt6k/QGgaC0idSHmaCoBEQaQvavMQIgk6QaC6o+MpHAD+FmBWSCNp+IoWghInGgna/NDdQemAlRcYSNOkYm0JQwkTL60G9DzNVh3MIOmkicUGTPkElpvYQB+unx9EGmidKot31oP4/6qwuFIGgkyYaCVpcDBrAxSJ+BDWpI4GdT4FIdZipELTT5YSg0yKaX80UxneSSkHbo0oQdFpEy5MkjRxE0O6wJwSdFtF8HFTjN7wapQdWUgSCgmgKDPlLc7KFIegEicRPklqIFIJOjThBQUsQBJ0A0VzQdRD3B4WgkRCpXiwCQSMh0v4svo1oXj4CQSdAhKAFceB1COqHSPQQL10Wgk6QSPQkSSVoAkEnRiQ6zKQQNIGgUyNC0DwQNEyisaDsLGm31Pik04+g5VBTcyEISpZoLOhqzs+T1sM/pXB4QcsLRyDodIgWw0z8hz58DzMNC9rgQVCyRAtB+RgTBN0baJ4oieZX1C82d86zX43vz/0royTsP4OFe59mj0mDZ4DuX+UIIGS0qO6wPE9XGlctm7WgiUbrVOtTyom10/cELeg0iKEMM9WHh1QLDApaXxaCToNIStBygQFBxYgoBJ0E0VxQNzcPg6AgGgMPebEIBAXRGHjIy+0gKIjGQNKC1r+PPIKgnQ+n9gVaJEqi8SHe0c3DNAStf19TR9AWfSAQNEyikaAObx5mJGgyrBMEnQiRzjBTYiBo4/g+RM4CQcMk2gr61cFb0NrNajUE7Z2VBYKGSbQSVOuCUK+CSugDgaBhEi0EXfsZqIegURLNh5mYnsOXMqXjCVqoUfs2BwSNh2gmKGs89a61S8MSVEMsCBom0XCYSRzafQiapBA0SqJZC7oR3U/fgibm7wMEpUo07YPenvnpg0LQSIkWZ/Gbw57FNwQtloOgsRCtxkFZM3q4cVAIGjXR9pOk30HQ/YAWiZJofLGI7o98QFD9RUG0A4ZxsUhQghoYSmDnUyCSa0ETCBoVkVALms8KUSFoLEQ6ghazEDQqYiCClv1LxUvt1yBoLEQIqkeEoJ6IEFSPCEE9ESGoHhGCeiJCUD0iBPVEhKB6RAjqiUhAUNlrEDQWIgTVI0JQT0QIqkeEoJ6IEFSPCEE9EcMQVHoiVLwGQWMmQlA9IgT1RISgekQI6okYvKCJtH8KQWMhQlA9IgT1RCQiaPulEQQ1Ux6CeiJCUC1i0pkYDIGdT4EIQbWIENQXEYJqESGoL6IfQdu7GYKCaAHUFPTms5MHr8TU65OT95+3S8tWAkFtYkHk93or7qO1ffeF+H8WcYetq92HtW+RlzPVUoeooz1QT9A3Ty/Slx/wqeuPnudT9dKylSTS2YMKmsQg6O3ZIt09PM9mGoJu712m27c/aahYvTgpQW++eC7UzFJN9QjalgOCOiIK037xy2qm5eD/nM3ufvPOo6NL1p7OWWt798X2eHZ0uX3nkd4tNseo4x5APUGvP36V3nz+LJ/LWtD7PFfqJNLZpLsgfzJRvWSQbvnECJl0Jkjkv79dm/nNH7Kj+u//PJ/70ez3vmTP/fHPf/NHn/CHqx99l/3727/45Oq/vs2e+u1ffumjwmbRE/T1g0rQ68fvFaaOeojvvIIWVCubejvY7IPyGxkdfcnm+VPiJ9YX+YxY8vZ75weq4x5Amxa0moKgY8fyEF+fafYu139SCDrPF5iioM0+aPr1Rau0bCWJdC6R7X4IugdRnCQtF9lMQ1D+m8C3Z9/Nndy+fX57dsqm+BnV5u43kxL0zdMnec+zfrAPW9AkEkHF/QhzP1stKP85tsXVbsltFINOc7ZwcZI0KUHzcVAxxnRyYtMH9SBoEomg9IkeP0kqvawJKjkUQ9B9iaxVnIlfYOvMhFNHK6BrQfPPj2o7H4KCaAB0K2hSCFp79pCCtsYOIGiYRE+CcheT9odEDgVt93ohKBWiL0GTwpEEgoJoCXR4PWj26+9J00mloN1nxxM0gaBBEwkIKnsWgsZC9CRoWghaly9cQRPJ1FAI7HwKRK+Cpi1Bq4N5fewJgsZM9CVoqYdU0OrpbECqUxqCxkL0JmgeqaCJc0Hr69IgQlBvxJAETUMVNJmQoI0NCLSOukB/gqblG6kQ4sCCqjh9CXTnQ9B26f6VeBG0GOKqrTIWQRMI2i7dvxIIqh8I2srBBU07gqp8sBK0NXQFQQOtozbwILe+SSSzbgRtj61C0EDrqA085M9xFyndrP6RZX9B00gFbWxBmHXUBnoVVPERkjmx5DYETQ0ETRTT/Qlz50PQTumBlbRSfTwv/WTeglhwVYLmc5qC6hsa5s6HoJ3SAytppRqjT5IxBW34DkFHJDYTgaCyyU4gqGUgaKf0wEpa6bOyFghqGQjaKT2wErvsJWj9MwAIOm4gqC0RgopA0E7pgZXYBYJaBoJ2Sg+sxC4Wgtauhs4f838iE7S+BWHWURs4KUGrtqPRkELQcQNB9yDmJ+8QdFRiMxB0D2Lr+hMIGmgdtYEQtFlAMteTQDa6FQjaKT2wErtAUMtA0E7pgZXYBYLapdzmwX6NZSDoPsQkrQsWsaAJBIWgoWx0I4Wgw2eGloGg+xAhaLbNCQRNQxW0fQ+GYUGT3ll1QtnoRspuOAQNVdDGXKSCphA0JSBoMdu/rxQ/fDucUDa6EQjaLT2wErtAUKMkiomQ6mgBhKBpV0iKgrYvNCwnA6qjDXCCgrY/Vh8UtPMVFAjaGwi6D1EuaO++6vgIQXtDSVDfP3ffTcL+a8xm84l8afFS57WehYNNsRX1raG4He2gBZW0l5Rb0FYHPKg62gCnJ2hiKKj8V0f0EspGpxC0v/TASuwyCrF+O1IZUXprE8KCJhBUVnpgJXY5kKDSQpoJaKM7P9ubQtAJCCpXkaSgta5M9dw+RGUg6IjEhqC6vU0I2hsIOiaxfujrHs+nJqjkssGA6mgDnL6gtYfuR0bTFlTMBlRHG+DkBc2jELRnYZ0EtNHZr0pDUHnpgZXYBYKaJJHdDRiC6q3ELuMSxQFw0oIqngyojjbAqAVViQhBewNBXRBNBNU2NJyNVp/thVNHKyAEVS2sk3A2GoL2lh5YiV3cCpooB5nSCQmahFRHK2C8giY9Gk5F0BSCaq3ELq4F7fmxEQjaFwjqgigRtH9hnYSz0RC0t/TASuziVNB+BSFoXyCoCyIEHS0Q1AUxTkHZ8+HU0QoYk6DJVbEbh36MEYL2BYI6ISaVoL0nSNmyeglmo3tGdIOpox0wRkGHf8w2ckGzK0vLgbj2iBwEdUKsCaqxrF6C2Wi1oIkBMZOym9bfNAR1QswFHTy8Z8vqJZSN7vvMQZdYuKh+tZiGoE6ImaCJln3kBO15SYvY+7latUw2AUGdELmgGt3PfFm9hLLRffXV6NDo6JktKB4gqBNikkxV0P6NGhjx1ZWzXBqCuiKanC9o7rMwNtr6QwczO4syENQRcaqCDjjWd+JjvjLNs0yzQFBjIh1BB325kr9u0XhWxJEdhaDGRDKCDqty1VqkGty0zdXYrSgENSZSEFTTs6vi7lTNofc9cpXadg96gKpAUHn03n9vVTTQ7CodQ8omMR23KwpBzYkBC2qom7M6jmcoBDUnhiao/eHZXR1Ha0QhqDkxHEH3P6UZOyWx74uxVkBJIKg8eko4PHyOdELj+G2EoN6I/gQdScwaceTUBR2llhDUhqjz1ltVse/auJHPt3kcv41j1BaC2hBdCMrly/7feLJ2qTDBt3F/RSGoFVHjfTfqM3QvVJeMnfveaBviKCP/qkBQdTQ+RqyWzUddqt90Tarv9qRNCys3u2vxvtE2xPzm49aWQlBLotLQYnylNiJY0zC3td5OSnee7Dn/G21FzP8MByRVvZ8Q1JaovhAo2xfFoFBpbNaGJlWjovslE+sqBkNsDT7UO9qFvrW3RLuKmoLefHby4FVrKo1AUNlJdWFn8U53lpD83Ia7KgZFrPou+WGjeINkne5O/1saPUHfPL1IX37QnKqX7q21bYIglu914+1Nq/Nu6XErVkF5as41+jzdBbN/em/UqivozRfP0+uPnjem6qUHa22TgIilntUbnWTfzpGraH9SG9BGH464/yH++uNX6c3nzxpT93muog0z03cVooieoK8fFFpWU3W9B/4K7EKASKCKFIhuWtB66YGV2IUAkUAVKRD3FzT2PujBgHES9xf0zdMn5Vn8k6jO4g8MjJM42jgobzqjGgc9ODBOIj5JckUkUEUKRAjqikigihSIENQVkUAVKRAhqCsigSpSIEJQV0QCVaRAhKCuiASqSIEIQV0RCVSRAhGCuiISqCIFIgR1RSRQRQpECOqKSKCKFIgQ1BWRQBUpECGoKyKBKlIgOhQUQRxnL0Gd5v7wIr5DoIoU6qhTRQhqEwJVpFBHCOoqBKpIoY5EBUWQKhAUCToQFAk6EBQJOhAUCTqhCCq+c59/c7T5EEiuH5+cXIRdxfT1ycn7gb+N2W3oDKoYiKCv+Tub30Gv+RBI+F1Vrv/hWchVFH/kncoFVsc0fcn+zg2qGIagX7/3r/yr99ndS5oPvquW5zV/A7++CLmKIp3KhVbH63/85wuTPR2GoNlff37/p+aD74rV0qlbeFXkLVHQdXzz45+w9tKgiiEJmt9Br/ngu2JV+N1/Aq/i9eP3noVdx5dP+AHdoIohCRr0nz7ryT9JA69iGnwrz2rzhm4LGnTn6foxO/kMu4oiYfeTX57wPCHaB83voNd8CCSZn0FXsThwBl3HbJjJoIohCRryAF72p38RchVFJVkfNOw6Eh0HRRB5ICgSdCAoEnQgKBJ0ICgSdCAoEnQgKBJ0ICgSdCCoUdZ3f322WN19wSdnc/bv7dlcsej27XMl5n//o/flalW29ZxOIKhRhDWbo0tu5t9wT3dLlUQ9BvKXIKheIKhRNsya0+3xKTPz4Q8eMsU2d1Se7SuoWNUeVZ1IIKhRtn+e/vT8lrdsm6yBW7NmdHs8m80W4tl0fXR5ezabsTaWG1hOfsoW4VYvZ3c+vffvbGaxffv7M/Ecp+avZ4+LbTbDV+V3a0MIBLUIt3K1SNes+8kedstTISZ/llkqeqVsmglaTh6zl9gSvD+wWx5dihY0f47ziunscVa9gEBQm2x4M8nauHuXXM7/46dMzLn8wC16qOz5+iTvExTz60LQ07IbUExnj7UXEAhqk93DcyanUO8eb+k27GB9Rxz5WXO5nomwY/h5bVI4x9tYrnXZBy0Ezaer5yBoEQhqk9WCH97zh93yTuZb1i0VFqaVkGnlHAQ1DwS1yXq+WpQPG64dP5vfPfyUNajFeT0/pFeT1SF+cwRBDQJBbbL9MyFQ9sA13B5zF1d87P72jAnLnhMnSeWkcK44SeI9VwiqFwhqk91SHLyFgNzL2Z0f8FP5jRg24mNL+UG/Nin+4cNM32fNKDO5eI73XCGoOhD00NnkHdMi27/zVBEagaAHDO8MdD683+DzzL5A0EOGjzu1Ly75CkPyfYGgSNCBoEjQgaBI0IGgSNCBoEjQgaBI0IGgSND5fz/FH1oYkMW/AAAAAElFTkSuQmCC" /></p>
+<h3 id="conclusion">Conclusion</h3>
+<p>This package will be beneficial to any researcher who will be working on ATR-FTIR analysis.</p>
 
 </body>
 </html>

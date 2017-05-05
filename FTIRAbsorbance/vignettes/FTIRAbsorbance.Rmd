@@ -1,5 +1,5 @@
 ---
-title: "FTIR_Absorbance"
+title: "Attenuated Total Reflection-Fourier Transform Infrared Spectroscopy"
 author: "Marife Anunciado"
 date: "April 27, 2017"
 output: 
@@ -24,10 +24,20 @@ library(reshape2)
 library(magrittr)
 ```
 
-#### For each column, values were normalized. The cbind statement creates a new object/column of row means where "x" is the input matrix, row.means = rowMeans(x)" uses the rowMeans function to the matrix, and names the new column "row.means" so now we can make our new object with a column of row means. Since original wavelength values were converted as character, a new column "Wavelength" was added for plotting the 
-absorbance purpose.
+### Data Download & Conversion
 
-```{r, echo=FALSE, warning=FALSE}
+Changes on the spectral intensities correlates to the formation and destruction of functional groups within the plastic films.Using the package FTIRAbsorbance, raw data (.csv file) generated directly from the instrument can be normalized through R without use of any data analysis software. Upon download of the original dataset, the table below shows the output with the original absorbance for each wavelength spectrum, using the code higlighted. 
+
+```{r}
+raw_a <- as.data.frame(mulch_plot)
+knitr::kable(head(raw_a))
+```
+
+### Normalization and Row Mean Calculation
+
+For each column, values were normalized. The cbind statement creates a new object/column of row means where "x" is the input matrix, row.means = rowMeans(x)" uses the rowMeans function to the matrix, and names the new column "row.means" so now we can make our new object with a column of row means. Since original wavelength values were converted as character, a new column "Wavelength" was added for plotting the absorbance purpose.
+
+```{r, warning=FALSE}
 normalize_add_rowmeans <- function(x) {
   for (i in 1:ncol(x)) {
         x[,i] <- (x[,i]- min(x[,i], na.rm = TRUE)) / (max(x[,i],na.rm = TRUE)-min(x[,i], na.rm = TRUE))
@@ -43,9 +53,11 @@ knitr::kable(head(a))
 a <- as.data.frame(normalize_add_rowmeans(mulch_plot))
 ```
 
-#### The plot only shows the absorbance of plastic materials on a particular wavelength.
+### Absorbance
 
-```{r, echo=FALSE, warning=FALSE}
+The plot shows the FTIR absorbance spectra of plastic materials in the wavenumber from 4000-600. The code highlighted can be modified to display researcher's interest, as shown in the succeeding plot below.
+
+```{r, warning=FALSE}
 plot_abs <- function(df, df_x, df_y, xname,yname,title) {
     df <- ggplot(df) + geom_line(aes(df_x,df_y, colour = "red")) +
       xlab(deparse(substitute(xname))) + #user can assign a name on the x-axis label
@@ -61,9 +73,11 @@ plot_abs(a,a$Wavelength,a$C_38SAMPLE,xname = "Wavelength,nm",
                    yname = "Absorbance, AU", title = "FTIR Spectra of Plastic Mulch") 
 ```
 
-#### The plot below shows the absorbance of plastic materials on a particular wavelength with the acompanying compounds. 
+### Absorbance and Functional Groups
 
-```{r, echo=FALSE, warning=FALSE, results="asis"}
+The plot below shows the absorbance of plastic materials on a particular wavelength with the acompanying compounds. Looking at the plot gives what possible bending and stretching might have occurred indicating changes on the properties of plastic materials. 
+
+```{r, warning=FALSE, results="asis"}
 plot_abs_compounds <- function(df, df_x, df_y, xname,yname, title)
 {
     df <- ggplot(df) + 
@@ -86,3 +100,7 @@ plot_abs_compounds <- function(df, df_x, df_y, xname,yname, title)
 plot_abs_compounds(a,a$Wavelength,a$C_38SAMPLE,xname = "Wavelength,nm", 
                    yname = "Absorbance, AU", title = "FTIR Spectra of Plastic Mulch") 
 ```
+
+### Conclusion
+
+This package will be beneficial to any researcher who will be working on ATR-FTIR analysis. 
